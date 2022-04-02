@@ -7,7 +7,12 @@
     "build": "parcel build"
   },
   "devDependencies": {
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-redom-jsx": "^3.0.4",
     "parcel": "^2.4.1",
     "parcel-reporter-clean-dist": "^1.0.4"
+  },
+  "dependencies": {
+    "redom": "^3.27.1"
   }
 }
