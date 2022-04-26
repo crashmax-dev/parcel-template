@@ -1,24 +1,8 @@
 import { el, text, mount } from 'redom'
+import { Router } from './router'
+import { Button, Counter, Header } from './components'
 
-class Counter {
-  constructor({ count }) {
-    <span this="el">{count}</span>
-  }
-
-  update(count) {
-    this.el.textContent = count
-  }
-}
-
-class Button {
-  constructor({ onclick }, children) {
-    <button this="el" onclick={onclick}>
-      {children}
-    </button>
-  }
-}
-
-class App {
+class Count {
   state = {
     count: 0
   }
@@ -35,9 +19,33 @@ class App {
     </div>
   }
 
-  update(count) {
+  update(count = this.state.count) {
     this.counter.update(count)
   }
 }
 
-mount(document.body, <App />)
+class App {
+  constructor(attr, children) {
+    console.log(children);
+    <div this="el">
+      <Header router={router} />
+      {children}
+    </div>
+  }
+}
+
+const views = {
+  home: <Count />,
+  about: <div>about page</div>,
+  not_found: <div>not found <a href="#home" onclick={() => router.push('home')}>go home</a></div>
+}
+
+const router = new Router({
+  container: '#app',
+  catchRoute: 'not_found'
+}, views)
+
+mount(
+  document.body,
+  <App>{router.el}</App>
+)
