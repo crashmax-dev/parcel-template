@@ -7,6 +7,7 @@
     "build": "parcel build --public-url ."
   },
   "devDependencies": {
+    "@parcel/config-default": "^2.6.0",
     "parcel": "^2.4.1",
     "parcel-reporter-clean-dist": "^1.0.4"
   }
